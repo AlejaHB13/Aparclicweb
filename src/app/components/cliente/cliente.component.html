@@ -34,12 +34,37 @@
                     <td>{{item.nombre}}</td>
                     <td>{{item.cedula}}</td>
                     <td>{{item.telefono}}</td>
-                    
+                    <td><button type="button" class="btn btn-primary"
+                         (click)="toggleEditCliente(item._id)">
+                         <i class="bi bi-pencil-square"></i>
+                         </button></td>  
+                    <td><button type="button" class="btn btn-primary" (click)="deleteClienteEntry(item._id)">
+                           <i class="bi bi-trash"></i>
+                        </button></td>                          
                 </tr>
         </table>
     </div>
     <!--TERMINA TABLA-->
 
+    <form *ngIf="editableCliente" class="card p-2" (ngSubmit)="updateClienteEntry()" [formGroup]="clienteForm">
+         <div class="mb-3">
+         <label for="nombre" class="form-label">Nombre</label>
+         <input type="text" class="form-control" id="nombre"
+         placeholder="Nombre del cliente" formControlName="nombre">
+         </div>
+         <div class="mb-3">
+         <label for="cedula" class="form-label">Cedula</label>
+         <input type="text" class="form-control" id="cedula" placeholder="Cedula del cliente" formControlName="cedula">
+         </div>
+         <div class="mb-3">
+         <label for="telefono" class="form-label">Telefono</label>
+         <input type="text" class="form-control" id="telefono" placeholder="Telefono del cliente" formControlName="telefono">
+         </div>
+         <div class="input-group justify-content-center md-12">
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+         </div>
+        </form>
+        
     <!-- Modal New Cliente-->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
      <div class="modal-dialog">
