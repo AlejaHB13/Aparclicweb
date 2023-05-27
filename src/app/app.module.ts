@@ -9,13 +9,15 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ClienteComponent} from './components/cliente/cliente.component';
 import { ToastrModule } from 'ngx-toastr';
+import { ParqueaderosComponent } from './components/parqueaderos/parqueaderos.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     EmpleadoComponent,
-    ClienteComponent
+    ClienteComponent,
+    ParqueaderosComponent
   ],
   imports: [
     BrowserModule,
