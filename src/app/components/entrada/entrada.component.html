@@ -1,0 +1,96 @@
+<div class="container-fluid mt-4">
+    <div class="row">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Entrada Vehículos</li>
+            </ol>
+        </nav>
+        <div class="col-md-12 d-flex justify-content-center">
+            <div class="page-header">
+                <h1>
+                    <small>Entrada Vehículos</small>
+                </h1>
+            </div>
+        </div>
+    </div>
+    <!--CONTENIDO-->
+    <div class="">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Registrar entrada vehículo
+        </button>
+    </div>
+
+    <!--INICIA TABLA-->
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Placa</th>
+                    <th scope="col">Fecha Ingreso</th>
+                    <th scope="col">Hora Entrada</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of entradaList">
+                    <td>{{item.placa}}</td>
+                    <td>{{item.fechaIngreso}}</td>
+                    <td>{{item.horaEntrada}}</td>
+                </tr>
+        </table>
+    </div>
+    <!--TERMINA TABLA-->
+
+    <!-- Modal New Animal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Nueva entrada vehículo</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="card p-2" (ngSubmit)="newEntradaEntry()" [formGroup]="entradaForm">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Placa</label>
+                            <input type="text" class="form-control" id="placa" aria-describedby="emailHelp"
+                                placeholder="Placa del vehículo" formControlName="placa">
+                        </div>
+                        <div class="mb-3">
+                            <label for="edad" class="form-label">Fecha Entrada</label>
+                            <input type="date" class="form-control" id="fechaEntrada"
+                                placeholder="Fecha entrada vehículo" formControlName="fechaEntrada">
+                        </div>
+                        <div class="mb-3">
+                            <label for="tipo" class="form-label">Hora Entrada</label>
+                            <input type="time" class="form-control" id="hora" aria-describedby="emailHelp"
+                                placeholder="Hora entrada vehículo" formControlName="hora">
+                        </div>
+
+                        <script>
+                            // Obtén la referencia al elemento de entrada de hora
+                            const inputHora = document.getElementById("hora");
+
+                            // Obtén la hora actual
+                            const horaActual = new Date();
+
+                            // Formatea la hora en un formato adecuado
+                            const horaFormateada = horaActual.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: false });
+
+                            // Establece el valor formateado en el elemento de entrada de hora
+                            inputHora.value = horaFormateada;
+                        </script>
+
+                        <div class="input-group justify-content-center md-12">
+                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

@@ -10,6 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ClienteComponent} from './components/cliente/cliente.component';
 import { ToastrModule } from 'ngx-toastr';
 import { ParqueaderosComponent } from './components/parqueaderos/parqueaderos.component';
+import { EntradaComponent } from './components/entrada/entrada.component';
+
 
 
 @NgModule({
@@ -17,7 +19,8 @@ import { ParqueaderosComponent } from './components/parqueaderos/parqueaderos.co
     AppComponent,
     EmpleadoComponent,
     ClienteComponent,
-    ParqueaderosComponent
+    ParqueaderosComponent,
+    EntradaComponent
   ],
   imports: [
     BrowserModule,
