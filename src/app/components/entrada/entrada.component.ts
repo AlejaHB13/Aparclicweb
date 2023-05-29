@@ -1,3 +1,4 @@
+import { getLocaleDateTimeFormat } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -11,6 +12,11 @@ import { EntradaService } from 'src/app/services/entrada.service';
   styleUrls: ['./entrada.component.css']
 })
 export class EntradaComponent {
+  entradaForm = this.formBuilder.group({
+    placa: '',
+    fechaIngreso: Date,
+    horaEntrada: getLocaleDateTimeFormat,
+  })
   constructor(private entradaService: EntradaService,
     private formBuilder: FormBuilder,
     private router: Router,
@@ -24,11 +30,7 @@ export class EntradaComponent {
   ngOnInit() {
     this.getAllEntradas();
   }
-  entradaForm = this.formBuilder.group({
-    placa: '',
-    fechaIngreso: Date,
-    horaEntrada: '',
-  })
+  
   newEntradaEntry() {
     this.entradaService.newEntrada(this.entradaForm.value).subscribe(
       () => {

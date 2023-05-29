@@ -58,18 +58,18 @@
                         </div>
                         <div class="mb-3">
                             <label for="edad" class="form-label">Fecha Entrada</label>
-                            <input type="date" class="form-control" id="fechaEntrada"
-                                placeholder="Fecha entrada vehículo" formControlName="fechaEntrada">
+                            <input type="date" class="form-control" id="fechaIngreso"
+                                placeholder="Fecha entrada vehículo" formControlName="fechaIngreso">
                         </div>
                         <div class="mb-3">
                             <label for="tipo" class="form-label">Hora Entrada</label>
-                            <input type="time" class="form-control" id="hora" aria-describedby="emailHelp"
-                                placeholder="Hora entrada vehículo" formControlName="hora">
+                            <input type="time" class="form-control" id="horaEntrada" aria-describedby="emailHelp"
+                                placeholder="Hora entrada vehículo" formControlName="horaEntrada">
                         </div>
 
                         <script>
                             // Obtén la referencia al elemento de entrada de hora
-                            const inputHora = document.getElementById("hora");
+                            const inputHora = document.getElementById("horaEntrada");
 
                             // Obtén la hora actual
                             const horaActual = new Date();
