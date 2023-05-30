@@ -4,19 +4,22 @@
         "secure": false,
         "changeOrigin": false
     },
-
     "/api/cliente": {
         "target": "http://localhost:3000",
         "secure": false,
         "changeOrigin": false
     },
-
     "/api/parqueaderos": {
         "target": "http://localhost:3000",
         "secure": false,
         "changeOrigin": false
     },
     "/api/entradavehiculo": {
+        "target": "http://localhost:3000",
+        "secure": false,
+        "changeOrigin": false
+    },
+    "/api/salidavehiculo": {
         "target": "http://localhost:3000",
         "secure": false,
         "changeOrigin": false
