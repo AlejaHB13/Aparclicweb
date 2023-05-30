@@ -52,35 +52,20 @@
                 <div class="modal-body">
                     <form class="card p-2" (ngSubmit)="newEntradaEntry()" [formGroup]="entradaForm">
                         <div class="mb-3">
-                            <label for="nombre" class="form-label">Placa</label>
-                            <input type="text" class="form-control" id="placa" aria-describedby="emailHelp"
+                            <label for="placa" class="form-label">Placa</label>
+                            <input type="text" class="form-control" id="placa" 
                                 placeholder="Placa del vehículo" formControlName="placa">
                         </div>
                         <div class="mb-3">
-                            <label for="edad" class="form-label">Fecha Entrada</label>
+                            <label for="fechaIngreso" class="form-label">Fecha Entrada</label>
                             <input type="date" class="form-control" id="fechaIngreso"
                                 placeholder="Fecha entrada vehículo" formControlName="fechaIngreso">
                         </div>
                         <div class="mb-3">
-                            <label for="tipo" class="form-label">Hora Entrada</label>
-                            <input type="time" class="form-control" id="horaEntrada" aria-describedby="emailHelp"
-                                placeholder="Hora entrada vehículo" formControlName="horaEntrada">
+                            <label for="horaEntrada" class="form-label">Hora Entrada</label>
+                            <input type="time" step="3600" class="form-control" id="horaEntrada" 
+                                placeholder="Hora entrada vehículo" formControlName="horaEntrada"  min="00:00" max="23:59">
                         </div>
-
-                        <script>
-                            // Obtén la referencia al elemento de entrada de hora
-                            const inputHora = document.getElementById("horaEntrada");
-
-                            // Obtén la hora actual
-                            const horaActual = new Date();
-
-                            // Formatea la hora en un formato adecuado
-                            const horaFormateada = horaActual.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: false });
-
-                            // Establece el valor formateado en el elemento de entrada de hora
-                            inputHora.value = horaFormateada;
-                        </script>
-
                         <div class="input-group justify-content-center md-12">
                             <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
                         </div>

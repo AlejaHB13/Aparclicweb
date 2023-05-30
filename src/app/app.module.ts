@@ -11,6 +11,7 @@ import {ClienteComponent} from './components/cliente/cliente.component';
 import { ToastrModule } from 'ngx-toastr';
 import { ParqueaderosComponent } from './components/parqueaderos/parqueaderos.component';
 import { EntradaComponent } from './components/entrada/entrada.component';
+import { HoraMilitarPipe } from './hora-militar.pipe';
 
 
 
@@ -20,7 +21,8 @@ import { EntradaComponent } from './components/entrada/entrada.component';
     EmpleadoComponent,
     ClienteComponent,
     ParqueaderosComponent,
-    EntradaComponent
+    EntradaComponent,
+    HoraMilitarPipe
   ],
   imports: [
     BrowserModule,
