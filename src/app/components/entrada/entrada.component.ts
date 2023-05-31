@@ -71,7 +71,7 @@ export class EntradaComponent {
     );
   }
  
-  toggleEditAnimal(id: any) {
+  toggleEditEntrada(id: any) {
     this.idEntrada = id;
     console.log(this.idEntrada)
     this.entradaService.getOneEntrada(id).subscribe(
