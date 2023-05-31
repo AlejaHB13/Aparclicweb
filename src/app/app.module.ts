@@ -13,6 +13,7 @@ import { ParqueaderosComponent } from './components/parqueaderos/parqueaderos.co
 import { EntradaComponent } from './components/entrada/entrada.component';
 import { HoraMilitarPipe } from './hora-militar.pipe';
 import { SalidaComponent } from './components/salida/salida.component';
+import { VehiculoComponent } from './components/vehiculo/vehiculo.component';
 
 
 
@@ -24,7 +25,8 @@ import { SalidaComponent } from './components/salida/salida.component';
     ParqueaderosComponent,
     EntradaComponent,
     HoraMilitarPipe,
-    SalidaComponent
+    SalidaComponent,
+    VehiculoComponent
   ],
   imports: [
     BrowserModule,
