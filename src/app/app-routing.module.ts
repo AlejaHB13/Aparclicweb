@@ -6,6 +6,8 @@ import { ParqueaderosComponent } from './components/parqueaderos/parqueaderos.co
 import { EntradaComponent } from './components/entrada/entrada.component';
 import { SalidaComponent } from './components/salida/salida.component';
 import { VehiculoComponent } from './components/vehiculo/vehiculo.component';
+import { LoginComponent } from './authentication/login/login.component';
+import { SignupComponent } from './authentication/signup/signup.component';
 
 const routes: Routes = [
   {path : 'empleado',component: EmpleadoComponent},
@@ -14,6 +16,9 @@ const routes: Routes = [
   {path : 'entradavehiculo',component:EntradaComponent},
   {path : 'salidavehiculo',component:SalidaComponent},
   {path : 'vehiculo',component:VehiculoComponent},
+  {path: 'signup',component: SignupComponent},
+  {path: 'login',component: LoginComponent},
+
 
 ];
 

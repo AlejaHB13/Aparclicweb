@@ -14,6 +14,8 @@ import { EntradaComponent } from './components/entrada/entrada.component';
 import { HoraMilitarPipe } from './hora-militar.pipe';
 import { SalidaComponent } from './components/salida/salida.component';
 import { VehiculoComponent } from './components/vehiculo/vehiculo.component';
+import { LoginComponent } from './authentication/login/login.component';
+import { SignupComponent } from './authentication/signup/signup.component';
 
 
 
@@ -26,7 +28,9 @@ import { VehiculoComponent } from './components/vehiculo/vehiculo.component';
     EntradaComponent,
     HoraMilitarPipe,
     SalidaComponent,
-    VehiculoComponent
+    VehiculoComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
