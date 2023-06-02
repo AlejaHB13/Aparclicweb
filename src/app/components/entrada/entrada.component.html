@@ -29,6 +29,8 @@
                     <th scope="col">Placa</th>
                     <th scope="col">Fecha Ingreso</th>
                     <th scope="col">Hora Entrada</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Eliminar</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,10 +38,40 @@
                     <td>{{item.placa}}</td>
                     <td>{{item.fechaIngreso}}</td>
                     <td>{{item.horaEntrada}}</td>
+                    <td><button type="button" class="btn btn-primary" (click)="toggleEditEntrada(item._id)">
+                            <i class="bi bi-pencil-square"></i>
+                        </button></td>
+                    <td><button type="button" class="btn btn-primary" (click)="deleteEntradaEntry(item._id)">
+                            <i class="bi bi-trash"></i>
+                        </button></td>
+
+
                 </tr>
         </table>
     </div>
     <!--TERMINA TABLA-->
+    <!--ACTUALIZAR-->
+    <form *ngIf="editableEntrada" class="card p-2" (ngSubmit)="updateEntradaEntry()" [formGroup]="entradaForm">
+        <div class="mb-3">
+            <label for="placa" class="form-label">Placa</label>
+            <input type="text" class="form-control" id="placa" placeholder="Placa del vehículo" formControlName="placa"
+                oninput="this.value = this.value.toUpperCase()">
+        </div>
+        <div class="mb-3">
+            <label for="fechaIngreso" class="form-label">Fecha Entrada</label>
+            <input type="date" class="form-control" id="fechaIngreso" placeholder="Fecha entrada vehículo"
+                formControlName="fechaIngreso">
+        </div>
+        <div class="mb-3">
+            <label for="horaEntrada" class="form-label">Hora Entrada</label>
+            <input type="time" step="3600" class="form-control" id="horaEntrada" placeholder="Hora entrada vehículo"
+                formControlName="horaEntrada" min="00:00" max="23:59">
+        </div>
+        <div class="input-group justify-content-center md-12">
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+        </div>
+    </form>
+
 
     <!-- Modal New Animal-->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -53,8 +85,8 @@
                     <form class="card p-2" (ngSubmit)="newEntradaEntry()" [formGroup]="entradaForm">
                         <div class="mb-3">
                             <label for="placa" class="form-label">Placa</label>
-                            <input type="text" class="form-control" id="placa" 
-                                placeholder="Placa del vehículo" formControlName="placa">
+                            <input type="text" class="form-control" id="placa" placeholder="Placa del vehículo"
+                                formControlName="placa" oninput="this.value = this.value.toUpperCase()">
                         </div>
                         <div class="mb-3">
                             <label for="fechaIngreso" class="form-label">Fecha Entrada</label>
@@ -63,8 +95,9 @@
                         </div>
                         <div class="mb-3">
                             <label for="horaEntrada" class="form-label">Hora Entrada</label>
-                            <input type="time" step="3600" class="form-control" id="horaEntrada" 
-                                placeholder="Hora entrada vehículo" formControlName="horaEntrada"  min="00:00" max="23:59">
+                            <input type="time" step="3600" class="form-control" id="horaEntrada"
+                                placeholder="Hora entrada vehículo" formControlName="horaEntrada" min="00:00"
+                                max="23:59">
                         </div>
                         <div class="input-group justify-content-center md-12">
                             <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>

@@ -12,17 +12,21 @@ import { ToastrModule } from 'ngx-toastr';
 import { ParqueaderosComponent } from './components/parqueaderos/parqueaderos.component';
 import { EntradaComponent } from './components/entrada/entrada.component';
 import { HoraMilitarPipe } from './hora-militar.pipe';
+import { SalidaComponent } from './components/salida/salida.component';
+import { VehiculoComponent } from './components/vehiculo/vehiculo.component';
 
 
 
-@NgModule({
+  @NgModule({
   declarations: [
     AppComponent,
     EmpleadoComponent,
     ClienteComponent,
     ParqueaderosComponent,
     EntradaComponent,
-    HoraMilitarPipe
+    HoraMilitarPipe,
+    SalidaComponent,
+    VehiculoComponent
   ],
   imports: [
     BrowserModule,

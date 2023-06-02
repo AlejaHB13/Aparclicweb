@@ -1,49 +1,48 @@
-import { formatDate, getLocaleDateTimeFormat } from '@angular/common';
+import { formatDate } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs';
-import { EntradaService } from 'src/app/services/entrada.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { SalidaService } from 'src/app/services/salida.service';
 
 @Component({
-  selector: 'app-entrada',
-  templateUrl: './entrada.component.html',
-  styleUrls: ['./entrada.component.css']
+  selector: 'app-salida',
+  templateUrl: './salida.component.html',
+  styleUrls: ['./salida.component.css']
 })
-export class EntradaComponent {
-  entradaList: any = [];
-  entradaForm: any = this.formBuilder.group({
-    placa: '',
-    fechaIngreso: Date,
-    horaEntrada: Date,
+export class SalidaComponent {
+  salidaList: any = [];
+  salidaForm: any = this.formBuilder.group({
+    tipoVehiculo: '',
+    placaVehiculo:'',
+    horaSalida: Date,
 
   })
-  editableEntrada: boolean = false;
-  idEntrada: any;
-  constructor(private entradaService: EntradaService,
+  editableSalida: boolean = false;
+  idSalida: any;
+  constructor(private salidaService: SalidaService,
     private formBuilder: FormBuilder,
     private router: Router,
     private toastr: ToastrService) { }
 
-  getAllEntradas() {
-    this.entradaService.getAllEntradaData().subscribe((data: {}) => {
-      this.entradaList = data;
+  getAllSalidas() {
+    this.salidaService.getAllSalidaData().subscribe((data: {}) => {
+      this.salidaList = data;
     });
   }
   ngOnInit() {
-    this.getAllEntradas();
+    this.getAllSalidas();
   }
 
-  newEntradaEntry() {
+  newSalidaEntry() {
 
-    this.entradaService.newEntrada(this.entradaForm.value).subscribe(
+    this.salidaService.newSalida(this.salidaForm.value).subscribe(
       () => {
         
         console.log('llega')
         //Redirigiendo a la ruta actual /animal y recargando la ventana
-        this.router.navigate(['/entradavehiculo']).then(() => {
+        this.router.navigate(['/salidavehiculo']).then(() => {
           this.newMessage('Registro exitoso');
         })
       }
@@ -56,14 +55,14 @@ export class EntradaComponent {
       .pipe(take(1))
       .subscribe(() => window.location.reload());
   }
-  updateEntradaEntry() {
+  updateSalidaEntry() {
     //Removiendo valores vacios del formulario de actualización
-    for (let key in this.entradaForm.value) {
-      if (this.entradaForm.value[key] === '') {
-        this.entradaForm.removeControl(key);
+    for (let key in this.salidaForm.value) {
+      if (this.salidaForm.value[key] === '') {
+        this.salidaForm.removeControl(key);
       }
     }
-    this.entradaService.updateEntrada(this.idEntrada, this.entradaForm.value).subscribe(
+    this.salidaService.updateSalida(this.idSalida, this.salidaForm.value).subscribe(
       () => {
         //Enviando mensaje de confirmación
         this.newMessage("Animal editado");
@@ -71,12 +70,12 @@ export class EntradaComponent {
     );
   }
  
-  toggleEditEntrada(id: any) {
-    this.idEntrada = id;
-    console.log(this.idEntrada)
-    this.entradaService.getOneEntrada(id).subscribe(
+  toggleEditAnimal(id: any) {
+    this.idSalida = id;
+    console.log(this.idSalida)
+    this.salidaService.getOneSalida(id).subscribe(
       data => {
-        this.entradaForm.setValue({
+        this.salidaForm.setValue({
           nombre: data.nombre,
           edad: data.edad,
           tipo: data.tipo,
@@ -84,11 +83,11 @@ export class EntradaComponent {
         });
       }
     );
-    this.editableEntrada = !this.editableEntrada;
+    this.editableSalida = !this.editableSalida;
   }
   deleteEntradaEntry(id: any) {
     console.log(id)
-    this.entradaService.deleteEntrada(id).subscribe(
+    this.salidaService.deleteSalida(id).subscribe(
       () => {
         //Enviando mensaje de confirmación
         this.newMessage("Animal eliminado");
@@ -127,5 +126,6 @@ export class EntradaComponent {
     var finalDate = formatDate(new Date(yyyy + '-' + mes + '-' + dia + ' GMT-0500'), 'yyyy-MM-dd', "en-US");
     return finalDate;
   }
+
 
 }
