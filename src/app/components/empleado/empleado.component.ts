@@ -67,9 +67,7 @@ export class EmpleadoComponent {
       data => {
         this.empleadoForm.setValue({
           nombre: data.nombre,
-          cedula: data.cedula,
-          usuario: data.usuario,
-          contrasena: data.contrasena
+          cedula: data.cedula
         });
       }
     );

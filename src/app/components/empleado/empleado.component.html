@@ -28,16 +28,13 @@
             <thead>
                 <tr>
                     <th scope="col">Nombre</th>
-                    <th scope="col">Cedula</th>
-                    <th scope="col">Usuario</th>
-                   
+                    <th scope="col">Cedula</th>           
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let item of empleadoList">
                     <td>{{item.nombre}}</td>
                     <td>{{item.cedula}}</td>
-                    <td>{{item.usuario}}</td>
                     <td><button type="button" class="btn btn-primary"
                                         (click)="toggleEditEmpleado(item._id)">
                                           <i class="bi bi-pencil-square"></i>
@@ -59,14 +56,6 @@
           <div class="mb-3">
             <label for="cedula" class="form-label">Cedula</label>
             <input type="text" class="form-control" id="cedula" placeholder="Cedula del empleado" formControlName="cedula">
-          </div>
-          <div class="mb-3">
-            <label for="usuario" class="form-label">Usuario</label>
-            <input type="text" class="form-control" id="usuario" placeholder="Usuario del empleado" formControlName="usuario">
-          </div>
-          <div class="mb-3">
-            <label for="contrasena" class="form-label">Contraseña</label>
-            <input type="text" class="form-control" id="contrasena" placeholder="Contraseña del empleado" formControlName="contrasena">
           </div>
           <div class="input-group justify-content-center md-12">
             <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
@@ -93,16 +82,6 @@
                 <label for="cedula" class="form-label">Cedula</label>
                 <input type="text" class="form-control" id="cedula" placeholder="Cedula del empleado"
                 formControlName="cedula">
-              </div>
-              <div class="mb-3">
-                <label for="usuario" class="form-label">Usuario</label>
-                <input type="text" class="form-control" id="usuario" 
-                  placeholder="Usuario del empleado" formControlName="usuario">
-              </div>
-              <div class="mb-3">
-                <label for="contrasena" class="form-label">Contraseña</label>
-                <input type="text" class="form-control" id="contrasena"
-                  placeholder="contrasena" formControlName="contrasena">
               </div>
               <div class="input-group justify-content-center md-12">
                 <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
