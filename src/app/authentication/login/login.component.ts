@@ -17,10 +17,18 @@ export class LoginComponent {
     this.document.body.classList.add('bg-gradient-primary');
   }
   onLogin(form: any): void {
+    const tipoUsuario = form.value.tipoUsuario;
     this.authenticationService.login(form.value).subscribe(
       (res) => {
         localStorage.setItem('accessToken',JSON.parse(JSON.stringify(res)).accessToken);
-        this.router.navigateByUrl('/cliente');
+        if (tipoUsuario === 'empleado') {
+          this.router.navigateByUrl('/cliente');
+        } else if (tipoUsuario === 'administrador') {
+          // Agrega la ruta correspondiente para administrador
+          this.router.navigateByUrl('/empleado');
+        } else {
+          // Si no se especifica un tipo válido, puedes mostrar un mensaje de error o tomar alguna otra acción
+        }
       }
     );
   }
