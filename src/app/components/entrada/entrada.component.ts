@@ -7,6 +7,7 @@ import { take } from 'rxjs';
 import { EntradaService } from 'src/app/services/entrada.service';
 import { FormControl, FormGroup } from '@angular/forms';
 
+
 @Component({
   selector: 'app-entrada',
   templateUrl: './entrada.component.html',
@@ -16,9 +17,8 @@ export class EntradaComponent {
   entradaList: any = [];
   entradaForm: any = this.formBuilder.group({
     placa: '',
-    fechaIngreso: Date,
-    horaEntrada: Date,
-
+    fechayhora: String
+    //horaEntrada: this.getValidDate(new Date()), // Puedes ajustar la función si es necesario
   })
   editableEntrada: boolean = false;
   idEntrada: any;
@@ -66,7 +66,7 @@ export class EntradaComponent {
     this.entradaService.updateEntrada(this.idEntrada, this.entradaForm.value).subscribe(
       () => {
         //Enviando mensaje de confirmación
-        this.newMessage("Animal editado");
+        this.newMessage("Entrada editada");
       }
     );
   }
@@ -77,10 +77,8 @@ export class EntradaComponent {
     this.entradaService.getOneEntrada(id).subscribe(
       data => {
         this.entradaForm.setValue({
-          nombre: data.nombre,
-          edad: data.edad,
-          tipo: data.tipo,
-          fecha: this.getValidDate(data.fecha)
+          placa: data.placa,
+          fechayhora: this.getValidDate(data.fecha)
         });
       }
     );
@@ -91,41 +89,48 @@ export class EntradaComponent {
     this.entradaService.deleteEntrada(id).subscribe(
       () => {
         //Enviando mensaje de confirmación
-        this.newMessage("Animal eliminado");
+        this.newMessage("Entrada eliminada");
       }
     );
   }
   getValidDate(fecha: Date) {
-    const fechaFinal: Date = new Date(fecha);
-    //separado los datos
-    var dd = fechaFinal.getDate() + 1;//fue necesario porque siempre daba un día antes
-    var mm = fechaFinal.getMonth() + 1; //porque Enero es 0
+    const fechaFinal: Date = new Date(fecha );
+    var dd = fechaFinal.getDate();
+    var mm = fechaFinal.getMonth() + 1;
     var yyyy = fechaFinal.getFullYear();
     var mes = '';
     var dia = '';
-    //Como algunos meses tienen 31 días dd puede dar 32
-    if (dd == 32) {
+  
+    // Manejar el caso en el que el mes cambie
+    if (dd === 31 && mm === 12) {
+      dd = 1;
+      mm = 1;
+      yyyy++;
+    } else if (dd === 32) {
       dd = 1;
       mm++;
     }
-    //Transformación de fecha cuando el día o mes son menores a 10
-    //se le coloca un cero al inicio
-    //Día
+  
+    // Transformación de fecha cuando el día o mes son menores a 10
+    // se le coloca un cero al inicio
+    // Día
     if (dd < 10) {
       dia += `0${dd}`;
     } else {
       dia += `${dd}`;
     }
-    //Mes
+    // Mes
     if (mm < 10) {
       mes += `0${mm}`;
     } else {
       mes += `${mm}`;
     }
-    //formatDate para colocar la fecha en un formato aceptado por el calendario
-    //GMT-0500 es para Colombia
-    var finalDate = formatDate(new Date(yyyy + '-' + mes + '-' + dia + ' GMT-0500'), 'yyyy-MM-dd', "en-US");
+  
+    // formatDate para colocar la fecha en un formato aceptado por el calendario
+    // GMT-0500 es para Colombia
+    var finalDate = formatDate(new Date(yyyy + '-' + mes + '-' + dia + ' GMT-0500'), 'yyyy-MM-dd', 'en-US');
     return finalDate;
   }
+  
 
 }

@@ -51,7 +51,7 @@
                 <tr>
                     <th scope="col">Tipo Vehículo</th>
                     <th scope="col">Placa</th>
-                    <th scope="col">Hora Salida</th>
+                    <th scope="col">Hora y Fecha Salida</th>
                     <th scope="col">Editar</th>
                     <th scope="col">Eliminar</th>
                 </tr>
@@ -60,7 +60,7 @@
                 <tr *ngFor="let item of salidaList">
                     <td>{{item.tipoVehiculo}}</td>
                     <td>{{item.placaVehiculo}}</td>
-                    <td>{{item.horaSalida}}</td>
+                    <td>{{item.fechayhora}}</td>
                     <td><button type="button" class="btn btn-primary" (click)="toggleEditAnimal(item._id)">
                             <i class="bi bi-pencil-square"></i>
                         </button></td>
@@ -89,9 +89,9 @@
                 formControlName="placaVehiculo" oninput="this.value = this.value.toUpperCase()">
         </div>
         <div class="mb-3">
-            <label for="horaSalida" class="form-label">Hora Salida</label>
-            <input type="time" step="3600" class="form-control" id="horaSalida" placeholder="Hora entrada vehículo"
-                formControlName="horaSalida" min="00:00" max="23:59">
+            <label for="fechayhora" class="form-label">Fecha y Hora de Salida</label>
+            <input type="datetime-local" class="form-control" id="fechayhora" placeholder="Fecha y hora de entrada"
+                formControlName="fechayhora" required>
         </div>
         <div class="input-group justify-content-center md-12">
             <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
@@ -99,7 +99,7 @@
     </form>
 
 
-    <!-- Modal New Animal-->
+    <!-- Modal New Salida-->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -123,10 +123,9 @@
                                 formControlName="placaVehiculo" oninput="this.value = this.value.toUpperCase()">
                         </div>
                         <div class="mb-3">
-                            <label for="horaSalida" class="form-label">Hora Salida</label>
-                            <input type="time" step="3600" class="form-control" id="horaSalida"
-                                placeholder="Hora entrada vehículo" formControlName="horaSalida" min="00:00"
-                                max="23:59">
+                            <label for="fechayhora" class="form-label">Fecha y Hora de Salida</label>
+                            <input type="datetime-local" class="form-control" id="fechayhora" placeholder="Fecha y hora de entrada"
+                                formControlName="fechayhora" required>
                         </div>
                         <div class="input-group justify-content-center md-12">
                             <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>

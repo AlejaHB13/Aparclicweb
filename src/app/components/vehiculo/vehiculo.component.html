@@ -3,8 +3,9 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <a class="navbar-brand">AparClic</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -16,16 +17,18 @@
                             <a class="nav-link" [routerLink]="[ '/vehiculo' ]" routerLinkActive="active">Vehiculos</a>
                         </li>
                         <li>
-                            <a class="nav-link" [routerLink]="[ '/entradavehiculo' ]" routerLinkActive="active">Entrada</a>
+                            <a class="nav-link" [routerLink]="[ '/entradavehiculo' ]"
+                                routerLinkActive="active">Entrada</a>
                         </li>
                         <li>
-                            <a class="nav-link" [routerLink]="[ '/salidavehiculo' ]" routerLinkActive="active">Salida</a>
+                            <a class="nav-link" [routerLink]="[ '/salidavehiculo' ]"
+                                routerLinkActive="active">Salida</a>
                         </li>
                         <li>
                             <a class="nav-link" [routerLink]="[ '/login' ]" routerLinkActive="active">Cerrar sesión</a>
                         </li>
                     </ul>
-        
+
                 </div>
             </div>
         </nav>
@@ -39,7 +42,8 @@
     </div>
     <!--CONTENIDO-->
     <div class="">
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"> Registrar vehiculo</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"> Registrar
+            vehiculo</button>
     </div>
     <!--INICIA TABLA-->
     <div class="table-responsive">
@@ -62,81 +66,81 @@
                     <td>{{item.color}}</td>
                     <td>{{item.modelo}}</td>
 
-                    <td><button type="button" class="btn btn-primary"
-                         (click)="toggleEditVehiculo(item._id)">
-                         <i class="bi bi-pencil-square"></i>
-                         </button></td>  
+                    <td><button type="button" class="btn btn-primary" (click)="toggleEditVehiculo(item._id)">
+                            <i class="bi bi-pencil-square"></i>
+                        </button></td>
                     <td><button type="button" class="btn btn-primary" (click)="deleteVehiculoEntry(item._id)">
-                           <i class="bi bi-trash"></i>
-                        </button></td>                          
+                            <i class="bi bi-trash"></i>
+                        </button></td>
                 </tr>
         </table>
     </div>
     <!--TERMINA TABLA-->
 
     <form *ngIf="editableVehiculo" class="card p-2" (ngSubmit)="updateVehiculoEntry()" [formGroup]="vehiculoForm">
-         <div class="mb-3">
-         <label for="tipo" class="form-label">Tipo</label>
-         <input type="text" class="form-control" id="tipo"
-         placeholder="Tipo del vehiculo" formControlName="tipo">
-         </div>
-         <div class="mb-3">
-         <label for="placa" class="form-label">Placa</label>
-         <input type="text" class="form-control" id="placa" placeholder="Placa del vehiculo" formControlName="placa">
-         </div>
-         <div class="mb-3">
-         <label for="color" class="form-label">Color</label>
-         <input type="text" class="form-control" id="color" placeholder="Color del vehiculo" formControlName="color">
-         </div>
-         <div class="mb-3">
-            <label for="modelo" class="form-label">Modelo</label>
-            <input type="text" class="form-control" id="modelo" placeholder="Modleo del vehiculo" formControlName="modelo">
-            </div>
-         <div class="input-group justify-content-center md-12">
-            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
-         </div>
-        </form>
-        
-    <!-- Modal New Vehiculo-->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-     <div class="modal-dialog">
-     <div class="modal-content">
-     <div class="modal-header">
-     <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo vehiculo</h1>
-     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-     </div>
-     <div class="modal-body">
-     <form class="card p-2" (ngSubmit)="newVehiculoEntry()" [formGroup]="vehiculoForm">
-     <div class="mb-3">
-     <label for="tipo" class="form-label">Tipo</label>
-     <input type="text" class="form-control" id="tipo" 
-     placeholder="Tipo del vehiculo" formControlName="tipo">
-     </div>
-     <div class="mb-3">
-     <label for="placa" class="form-label">Placa</label>
-    <input type="text" class="form-control" id="placa" placeholder="Placa del vehiculo"
-     formControlName="placa">
-     </div>
-     <div class="mb-3">
-     <label for="color" class="form-label">Color</label>
-     <input type="text" class="form-control" id="color" 
-      placeholder="Color del vehiculo" formControlName="color">
-     </div>
-     <div class="mb-3">
-        <label for="modelo" class="form-label">Modelo</label>
-        <input type="text" class="form-control" id="modelo" 
-         placeholder="Modelo del vehiculo" formControlName="modelo">
+        <div class="mb-3">
+            <label for="tipo" class="form-label">Tipo</label>
+            <input type="text" class="form-control" id="tipo" placeholder="Tipo del vehiculo" formControlName="tipo">
         </div>
-     <div class="input-group justify-content-center md-12">
-     <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
-     </div>
-     </form>
-     </div>
-     <div class="modal-footer">
-     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-     </div>
-     </div>
-     </div>
+        <div class="mb-3">
+            <label for="placa" class="form-label">Placa</label>
+            <input type="text" class="form-control" id="placa" placeholder="Placa del vehiculo" formControlName="placa"
+                oninput="this.value = this.value.toUpperCase()">
+        </div>
+        <div class="mb-3">
+            <label for="color" class="form-label">Color</label>
+            <input type="text" class="form-control" id="color" placeholder="Color del vehiculo" formControlName="color">
+        </div>
+        <div class="mb-3">
+            <label for="modelo" class="form-label">Modelo</label>
+            <input type="text" class="form-control" id="modelo" placeholder="Modleo del vehiculo"
+                formControlName="modelo">
+        </div>
+        <div class="input-group justify-content-center md-12">
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+        </div>
+    </form>
+
+    <!-- Modal New Vehiculo-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo vehiculo</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="card p-2" (ngSubmit)="newVehiculoEntry()" [formGroup]="vehiculoForm">
+                        <div class="mb-3">
+                            <label for="tipo" class="form-label">Tipo</label>
+                            <input type="text" class="form-control" id="tipo" placeholder="Tipo del vehiculo"
+                                formControlName="tipo">
+                        </div>
+                        <div class="mb-3">
+                            <label for="placa" class="form-label">Placa</label>
+                            <input type="text" class="form-control" id="placa" placeholder="Placa del vehiculo"
+                                formControlName="placa" oninput="this.value = this.value.toUpperCase()">
+                        </div>
+                        <div class="mb-3">
+                            <label for="color" class="form-label">Color</label>
+                            <input type="text" class="form-control" id="color" placeholder="Color del vehiculo"
+                                formControlName="color">
+                        </div>
+                        <div class="mb-3">
+                            <label for="modelo" class="form-label">Modelo</label>
+                            <input type="text" class="form-control" id="modelo" placeholder="Modelo del vehiculo"
+                                formControlName="modelo">
+                        </div>
+                        <div class="input-group justify-content-center md-12">
+                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
     </div>
-    
+
 </div>

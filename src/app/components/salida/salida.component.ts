@@ -16,7 +16,7 @@ export class SalidaComponent {
   salidaForm: any = this.formBuilder.group({
     tipoVehiculo: '',
     placaVehiculo:'',
-    horaSalida: Date,
+    fechayhora: String
 
   })
   editableSalida: boolean = false;
@@ -65,7 +65,7 @@ export class SalidaComponent {
     this.salidaService.updateSalida(this.idSalida, this.salidaForm.value).subscribe(
       () => {
         //Enviando mensaje de confirmación
-        this.newMessage("Animal editado");
+        this.newMessage("Salida editado");
       }
     );
   }
@@ -76,10 +76,10 @@ export class SalidaComponent {
     this.salidaService.getOneSalida(id).subscribe(
       data => {
         this.salidaForm.setValue({
-          nombre: data.nombre,
-          edad: data.edad,
+          tipoVehiculo:data.tipoVehiculo,
+          placaVehiculo: data.placaVehiculo,
           tipo: data.tipo,
-          fecha: this.getValidDate(data.fecha)
+          fechayhora: this.getValidDate(data.fechayhora)
         });
       }
     );
@@ -90,7 +90,7 @@ export class SalidaComponent {
     this.salidaService.deleteSalida(id).subscribe(
       () => {
         //Enviando mensaje de confirmación
-        this.newMessage("Animal eliminado");
+        this.newMessage("Salida eliminado");
       }
     );
   }
