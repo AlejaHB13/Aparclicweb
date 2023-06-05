@@ -15,8 +15,9 @@ export class SalidaComponent {
   salidaList: any = [];
   salidaForm: any = this.formBuilder.group({
     tipoVehiculo: '',
-    placaVehiculo:'',
-    fechayhora: String
+    placaVehiculo: '',
+    fechayhora: String,
+    costo:''
 
   })
   editableSalida: boolean = false;
@@ -38,9 +39,10 @@ export class SalidaComponent {
   newSalidaEntry() {
 
     this.salidaService.newSalida(this.salidaForm.value).subscribe(
-      () => {
-        
+      (data) => {
+        this.salidaForm.controls['costo'].setValue(data);
         console.log('llega')
+        console.log(data)
         //Redirigiendo a la ruta actual /animal y recargando la ventana
         this.router.navigate(['/salidavehiculo']).then(() => {
           this.newMessage('Registro exitoso');
@@ -69,14 +71,14 @@ export class SalidaComponent {
       }
     );
   }
- 
-  toggleEditAnimal(id: any) {
+
+  toggleEditSalida(id: any) {
     this.idSalida = id;
     console.log(this.idSalida)
     this.salidaService.getOneSalida(id).subscribe(
       data => {
         this.salidaForm.setValue({
-          tipoVehiculo:data.tipoVehiculo,
+          tipoVehiculo: data.tipoVehiculo,
           placaVehiculo: data.placaVehiculo,
           tipo: data.tipo,
           fechayhora: this.getValidDate(data.fechayhora)
@@ -85,7 +87,7 @@ export class SalidaComponent {
     );
     this.editableSalida = !this.editableSalida;
   }
-  deleteEntradaEntry(id: any) {
+  deleteSalidaEntry(id: any) {
     console.log(id)
     this.salidaService.deleteSalida(id).subscribe(
       () => {
