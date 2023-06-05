@@ -14,8 +14,7 @@ export class ParqueaderosComponent {
   parqueaderosList: any = [];
   parqueaderosForm: any = this.formBuilder.group({
     pisos: '',
-    cantEspacios: '',
-    cantDisponibles: ''
+    cantEspacios: ''
   })
 
   editableParqueaderos: boolean = false;
@@ -66,8 +65,7 @@ export class ParqueaderosComponent {
       data => {
         this.parqueaderosForm.setValue({
           pisos: data.pisos,
-          cantEspacios: data.cantEspacios,
-          cantDisponibles: data.cantDisponibles
+          cantEspacios: data.cantEspacios
         });
       }
     );
